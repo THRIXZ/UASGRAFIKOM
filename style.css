@@ -1,0 +1,36 @@
+body{
+    margin:0;
+    overflow:hidden;
+    font-family:Arial, sans-serif;
+}
+
+#hud{
+
+    position:absolute;
+
+    top:20px;
+    left:20px;
+
+    z-index:999;
+
+    background:white;
+
+    padding:15px;
+
+    width:220px;
+
+    border-radius:10px;
+
+    box-shadow:0 0 10px rgba(0,0,0,0.3);
+
+}
+
+button{
+
+    width:100%;
+
+    padding:10px;
+
+    cursor:pointer;
+
+}

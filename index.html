@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Petualangan Pulang — Motor Simulator | UAS Grafkom</title>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Fredoka:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="narrative.css">
+</head>
+<body>
+
+<!-- Decorative background doodles -->
+<div class="doodle doodle-1"></div>
+<div class="doodle doodle-2"></div>
+<div class="doodle doodle-3"></div>
+<div class="doodle doodle-4"></div>
+<div class="doodle doodle-5"></div>
+<div class="doodle-star">★</div>
+<div class="doodle-heart">♥</div>
+
+<!-- ============================================================
+     CHAPTER 0 — COVER
+============================================================ -->
+<section class="chapter active" data-chapter="0">
+  <div class="paper">
+    <div class="paper-holes"></div>
+    <div class="paper-margin"></div>
+    <div class="paper-content cover">
+      <p class="hand-greeting">Selamat Datang di Dunia...</p>
+      <h1 class="title-big">PETUALANGAN<br><span class="title-accent">PULANG</span></h1>
+
+      <div class="polaroid">
+        <div class="polaroid-tape"></div>
+        <div class="polaroid-img motor-emoji">🏍️</div>
+        <p class="polaroid-caption">Motor Simulator VR</p>
+      </div>
+
+      <p class="hand-greeting small">UAS Grafika Komputer</p>
+      <button class="btn-adventure" onclick="nextChapter()">MULAI PETUALANGAN</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CHAPTER 1 — PROLOG
+============================================================ -->
+<section class="chapter" data-chapter="1">
+  <div class="paper">
+    <div class="paper-holes"></div>
+    <div class="paper-margin"></div>
+    <div class="paper-content">
+      <div class="chapter-num">Bab 01</div>
+      <h2 class="chapter-title">Sore yang Tenang</h2>
+
+      <div class="story-flex">
+        <div class="story-text">
+          <p class="prose">Hari ini panjang sekali. Setelah seharian di kampus, akhirnya tiba waktunya untuk pulang.</p>
+          <p class="prose">Lampu jalan satu per satu mulai menyala. Langit oranye perlahan berubah jadi ungu. Angin sore menemani kamu menuju motor yang sudah diparkir.</p>
+          <p class="prose hand">"Saatnya pulang."</p>
+        </div>
+        <div class="polaroid small">
+          <div class="polaroid-tape"></div>
+          <div class="polaroid-img sunset-bg">🌇</div>
+          <p class="polaroid-caption">Sore di kampus</p>
+        </div>
+      </div>
+
+      <div class="chapter-nav">
+        <button class="btn-nav" onclick="prevChapter()">← Sebelumnya</button>
+        <span class="page-indicator">1 / 5</span>
+        <button class="btn-nav primary" onclick="nextChapter()">Lanjut →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CHAPTER 2 — PERSIAPAN
+============================================================ -->
+<section class="chapter" data-chapter="2">
+  <div class="paper">
+    <div class="paper-holes"></div>
+    <div class="paper-margin"></div>
+    <div class="paper-content">
+      <div class="chapter-num">Bab 02</div>
+      <h2 class="chapter-title">Persiapan</h2>
+
+      <p class="prose">Sebelum berangkat, ada beberapa hal yang harus diperhatikan. Berkendara itu bukan cuma soal jalan, tapi soal kesadaran.</p>
+
+      <div class="checklist">
+        <div class="check-item">
+          <span class="check-icon">🪖</span>
+          <div>
+            <h4>Helm</h4>
+            <p>Sudah dipasang dengan benar.</p>
+          </div>
+        </div>
+        <div class="check-item">
+          <span class="check-icon">🪞</span>
+          <div>
+            <h4>Spion</h4>
+            <p>Sudah dirapikan ke posisi yang nyaman.</p>
+          </div>
+        </div>
+        <div class="check-item">
+          <span class="check-icon">⚙️</span>
+          <div>
+            <h4>Mesin</h4>
+            <p>Sudah dipanaskan, suara halus.</p>
+          </div>
+        </div>
+        <div class="check-item">
+          <span class="check-icon">🎒</span>
+          <div>
+            <h4>Tas</h4>
+            <p>Tergantung di belakang, tidak goyang.</p>
+          </div>
+        </div>
+      </div>
+
+      <p class="prose hand">"Semuanya siap. Tarik napas dalam-dalam."</p>
+
+      <div class="chapter-nav">
+        <button class="btn-nav" onclick="prevChapter()">← Sebelumnya</button>
+        <span class="page-indicator">2 / 5</span>
+        <button class="btn-nav primary" onclick="nextChapter()">Lanjut →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CHAPTER 3 — JALANAN
+============================================================ -->
+<section class="chapter" data-chapter="3">
+  <div class="paper">
+    <div class="paper-holes"></div>
+    <div class="paper-margin"></div>
+    <div class="paper-content">
+      <div class="chapter-num">Bab 03</div>
+      <h2 class="chapter-title">Jalanan di Depan</h2>
+
+      <div class="story-flex reverse">
+        <div class="story-text">
+          <p class="prose">Jalan menuju rumah panjangnya kira-kira 1 kilometer. Pohon-pohon tinggi berjajar di kiri-kanan, tiang lampu jalan menyala kuning hangat.</p>
+          <p class="prose">Tidak ada yang harus ditakuti. Cukup pegang kendali, rasakan motornya, dan biarkan jalan bercerita lewat angin di wajahmu.</p>
+        </div>
+        <div class="polaroid small">
+          <div class="polaroid-tape"></div>
+          <div class="polaroid-img road-bg">🛣️</div>
+          <p class="polaroid-caption">Jalan pulang</p>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <h4>📍 Yang Akan Kamu Lihat</h4>
+        <ul class="prose">
+          <li>Jalanan lurus dengan garis tengah kuning</li>
+          <li>Pohon-pohon hijau di kiri-kanan jalan</li>
+          <li>Stang motor yang ikut berbelok saat kamu mengarahkan</li>
+          <li>Spion dan speedometer di hadapanmu</li>
+        </ul>
+      </div>
+
+      <div class="chapter-nav">
+        <button class="btn-nav" onclick="prevChapter()">← Sebelumnya</button>
+        <span class="page-indicator">3 / 5</span>
+        <button class="btn-nav primary" onclick="nextChapter()">Lanjut →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CHAPTER 4 — KONTROL
+============================================================ -->
+<section class="chapter" data-chapter="4">
+  <div class="paper">
+    <div class="paper-holes"></div>
+    <div class="paper-margin"></div>
+    <div class="paper-content">
+      <div class="chapter-num">Bab 04</div>
+      <h2 class="chapter-title">Cara Mengendarai</h2>
+
+      <p class="prose">Sebelum berangkat, kenali dulu kemudinya. Empat tombol saja, sederhana seperti hidup yang seharusnya.</p>
+
+      <div class="keys-grid">
+        <div class="key-card">
+          <span class="key-big">W</span>
+          <h4>Gas</h4>
+          <p>Tarik gas untuk maju ke depan.</p>
+        </div>
+        <div class="key-card">
+          <span class="key-big">S</span>
+          <h4>Mundur</h4>
+          <p>Tekan untuk berjalan mundur perlahan.</p>
+        </div>
+        <div class="key-card">
+          <span class="key-big">A</span>
+          <h4>Belok Kiri</h4>
+          <p>Stang akan ikut menoleh ke kiri.</p>
+        </div>
+        <div class="key-card">
+          <span class="key-big">D</span>
+          <h4>Belok Kanan</h4>
+          <p>Stang akan ikut menoleh ke kanan.</p>
+        </div>
+      </div>
+
+      <p class="prose hand">"Mudah saja, kan?"</p>
+
+      <div class="chapter-nav">
+        <button class="btn-nav" onclick="prevChapter()">← Sebelumnya</button>
+        <span class="page-indicator">4 / 5</span>
+        <button class="btn-nav primary" onclick="nextChapter()">Lanjut →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CHAPTER 5 — GO
+============================================================ -->
+<section class="chapter" data-chapter="5">
+  <div class="paper">
+    <div class="paper-holes"></div>
+    <div class="paper-margin"></div>
+    <div class="paper-content cover">
+      <div class="chapter-num">Bab 05</div>
+      <h2 class="chapter-title">Saatnya Berangkat</h2>
+
+      <div class="polaroid large">
+        <div class="polaroid-tape"></div>
+        <div class="polaroid-img start-bg">🏁</div>
+        <p class="polaroid-caption">Siap berkendara!</p>
+      </div>
+
+      <p class="prose center">Kunci motor sudah di tangan.<br>Helm sudah terpasang.<br>Jalanan menanti.</p>
+      <p class="prose hand center">"Ayo, kita pulang."</p>
+
+      <button class="btn-adventure big" onclick="goToSimulator()">NAIK MOTOR &nbsp; →</button>
+
+      <div class="chapter-nav">
+        <button class="btn-nav" onclick="prevChapter()">← Sebelumnya</button>
+        <span class="page-indicator">5 / 5</span>
+        <button class="btn-nav" onclick="goHome()">Kembali ke Awal</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CREDITS (footer fixed)
+============================================================ -->
+<div class="credits">
+  <span>UAS Grafika Komputer 2026</span>
+  <span>·</span>
+  <span>A-Frame WebVR</span>
+</div>
+
+<script src="narrative.js"></script>
+</body>
+</html>

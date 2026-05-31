@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Motor Simulator VR</title>
+
+<script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<a href="index.html" style="position:fixed;top:12px;left:12px;z-index:9999;background:rgba(255,94,58,0.95);color:#fff;padding:8px 16px;border-radius:100px;font-family:system-ui,sans-serif;font-size:12px;font-weight:600;text-decoration:none;letter-spacing:1px;box-shadow:0 4px 12px rgba(0,0,0,0.2);">← KEMBALI KE CERITA</a>
+
+<div id="hud">
+
+    <h2>Motor Simulator</h2>
+
+    <p>
+        W = Gas<br>
+        S = Mundur<br>
+        A = Belok Kiri<br>
+        D = Belok Kanan
+    </p>
+
+    <button id="startBtn">
+        Mulai Berkendara
+    </button>
+
+</div>
+
+<a-scene>
+
+    <!-- LANGIT -->
+    <a-sky color="#87CEEB"></a-sky>
+
+    <!-- TANAH -->
+    <a-plane
+        position="0 0 0"
+        rotation="-90 0 0"
+        width="2000"
+        height="2000"
+        color="#4CAF50">
+    </a-plane>
+
+    <!-- JALAN -->
+    <a-plane
+        position="0 0.02 -500"
+        rotation="-90 0 0"
+        width="20"
+        height="1000"
+        color="#444">
+    </a-plane>
+
+    <!-- GARIS TENGAH -->
+    <a-plane
+        position="0 0.03 -500"
+        rotation="-90 0 0"
+        width="0.4"
+        height="1000"
+        color="yellow">
+    </a-plane>
+
+    <!-- POHON -->
+    <a-entity id="trees"></a-entity>
+
+    <!-- PLAYER -->
+    <a-entity
+        id="rig"
+        position="0 1.6 10">
+
+        <a-camera id="camera">
+
+            <!-- SPEEDOMETER -->
+
+            <a-cylinder
+                position="0 -0.45 -0.8"
+                radius="0.18"
+                height="0.05"
+                color="#222">
+            </a-cylinder>
+
+            <a-cylinder
+                position="0 -0.45 -0.79"
+                radius="0.14"
+                height="0.02"
+                color="#ddd">
+            </a-cylinder>
+
+            <!-- DASHBOARD -->
+
+            <a-box
+                position="0 -0.65 -1"
+                width="0.5"
+                height="0.15"
+                depth="0.2"
+                color="#111">
+            </a-box>
+
+            <!-- STANG TENGAH -->
+
+            <a-cylinder
+                id="centerBar"
+                position="0 -0.35 -0.9"
+                radius="0.03"
+                height="0.7"
+                rotation="0 0 90"
+                color="silver">
+            </a-cylinder>
+
+            <!-- STANG KIRI -->
+
+            <a-cylinder
+                id="leftHandle"
+                position="-0.45 -0.25 -0.9"
+                radius="0.03"
+                height="0.55"
+                rotation="0 0 55"
+                color="silver">
+            </a-cylinder>
+
+            <!-- STANG KANAN -->
+
+            <a-cylinder
+                id="rightHandle"
+                position="0.45 -0.25 -0.9"
+                radius="0.03"
+                height="0.55"
+                rotation="0 0 -55"
+                color="silver">
+            </a-cylinder>
+
+            <!-- GRIP -->
+
+            <a-cylinder
+                position="-0.65 -0.08 -0.9"
+                radius="0.04"
+                height="0.2"
+                rotation="0 0 55"
+                color="black">
+            </a-cylinder>
+
+            <a-cylinder
+                position="0.65 -0.08 -0.9"
+                radius="0.04"
+                height="0.2"
+                rotation="0 0 -55"
+                color="black">
+            </a-cylinder>
+
+            <!-- SPION -->
+
+            <a-sphere
+                position="-0.8 0.15 -1"
+                radius="0.08"
+                scale="1.4 0.8 0.2"
+                color="#E0E0E0">
+            </a-sphere>
+
+            <a-sphere
+                position="0.8 0.15 -1"
+                radius="0.08"
+                scale="1.4 0.8 0.2"
+                color="#E0E0E0">
+            </a-sphere>
+
+        </a-camera>
+
+    </a-entity>
+
+</a-scene>
+
+<script src="script.js"></script>
+
+</body>
+</html>

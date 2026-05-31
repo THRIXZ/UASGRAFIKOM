@@ -1,0 +1,618 @@
+/* ============================================================
+   PETUALANGAN PULANG — Narrative Pages
+   Scrapbook / notebook style (inspired by Digital-Awakening)
+============================================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-family: 'Inter', -apple-system, sans-serif;
+  background: #FFE4D6;
+  background-image:
+    radial-gradient(circle at 10% 20%, #FFD4B8 0%, transparent 30%),
+    radial-gradient(circle at 90% 80%, #FFCBA4 0%, transparent 30%),
+    radial-gradient(circle at 50% 50%, #FFE4D6 0%, #FFD0B5 100%);
+  color: #3a2a1f;
+  -webkit-font-smoothing: antialiased;
+}
+
+button { font-family: inherit; cursor: pointer; border: none; outline: none; }
+
+/* ============================================================
+   DECORATIVE DOODLES
+============================================================ */
+
+.doodle {
+  position: fixed;
+  pointer-events: none;
+  opacity: 0.4;
+  z-index: 0;
+}
+
+.doodle-1 {
+  top: 8%; left: 5%;
+  width: 80px; height: 80px;
+  border: 3px dashed #ff8a65;
+  border-radius: 50%;
+  animation: float 8s ease-in-out infinite;
+}
+
+.doodle-2 {
+  top: 70%; left: 4%;
+  width: 60px; height: 60px;
+  border: 3px solid #ffab91;
+  border-radius: 12px;
+  transform: rotate(15deg);
+  animation: float 10s ease-in-out infinite reverse;
+}
+
+.doodle-3 {
+  top: 15%; right: 6%;
+  width: 70px; height: 70px;
+  border: 2px solid #ff7043;
+  border-radius: 50%;
+  animation: float 12s ease-in-out infinite;
+}
+
+.doodle-4 {
+  top: 55%; right: 5%;
+  width: 50px; height: 50px;
+  background: transparent;
+  border: 3px dashed #ff8a65;
+  transform: rotate(45deg);
+  animation: float 9s ease-in-out infinite reverse;
+}
+
+.doodle-5 {
+  bottom: 10%; left: 12%;
+  width: 0; height: 0;
+  border-left: 30px solid transparent;
+  border-right: 30px solid transparent;
+  border-bottom: 50px solid transparent;
+  border-bottom-color: rgba(255, 138, 101, 0.5);
+  animation: float 11s ease-in-out infinite;
+}
+
+.doodle-star, .doodle-heart {
+  position: fixed;
+  pointer-events: none;
+  font-size: 32px;
+  z-index: 0;
+  animation: bounce 3s ease-in-out infinite;
+}
+
+.doodle-star { bottom: 5%; right: 10%; color: #ff7043; }
+.doodle-heart { top: 5%; right: 8%; color: #ff5252; font-size: 28px; animation-delay: 0.5s; }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-15px) rotate(5deg); }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-8px) scale(1.1); }
+}
+
+/* ============================================================
+   CHAPTER SYSTEM
+============================================================ */
+
+.chapter {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 20px 60px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  transform: translateX(20px);
+  z-index: 1;
+  overflow-y: auto;
+}
+
+.chapter.active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(0);
+  z-index: 10;
+}
+
+/* ============================================================
+   PAPER (notebook page)
+============================================================ */
+
+.paper {
+  position: relative;
+  width: 100%;
+  max-width: 720px;
+  background: #fffef9;
+  background-image: repeating-linear-gradient(
+    transparent 0px,
+    transparent 31px,
+    #d6e8f5 31px,
+    #d6e8f5 32px
+  );
+  border-radius: 6px;
+  box-shadow:
+    0 20px 50px rgba(80, 50, 30, 0.2),
+    0 8px 20px rgba(80, 50, 30, 0.1);
+  padding: 48px 56px 48px 90px;
+  min-height: 80vh;
+}
+
+/* Hole punches */
+.paper-holes {
+  position: absolute;
+  top: 24px;
+  bottom: 24px;
+  left: 28px;
+  width: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.paper-holes::before,
+.paper-holes::after {
+  content: "";
+}
+
+.paper-holes::before {
+  background:
+    radial-gradient(circle, #FFD4B8 6px, transparent 7px) 0 0/18px 70px;
+  position: absolute;
+  inset: 0;
+}
+
+/* Margin red line */
+.paper-margin {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 75px;
+  width: 2px;
+  background: #ff7a90;
+  opacity: 0.6;
+}
+
+.paper-content {
+  position: relative;
+  z-index: 2;
+}
+
+.paper-content.cover {
+  text-align: center;
+  padding: 30px 20px;
+}
+
+/* ============================================================
+   TYPOGRAPHY
+============================================================ */
+
+.hand-greeting {
+  font-family: 'Caveat', cursive;
+  font-size: 28px;
+  color: #5d4037;
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+
+.hand-greeting.small { font-size: 22px; margin: 24px 0 12px; }
+
+.title-big {
+  font-family: 'Fredoka', sans-serif;
+  font-size: clamp(48px, 9vw, 88px);
+  line-height: 0.95;
+  font-weight: 700;
+  color: #ff5e3a;
+  text-shadow:
+    3px 3px 0 #fff,
+    6px 6px 0 rgba(255, 94, 58, 0.15);
+  letter-spacing: -2px;
+  margin-bottom: 32px;
+}
+
+.title-accent {
+  display: inline-block;
+  color: #e63946;
+  transform: rotate(-2deg);
+}
+
+.chapter-num {
+  display: inline-block;
+  font-family: 'Caveat', cursive;
+  font-size: 18px;
+  background: #ff8a65;
+  color: #fff;
+  padding: 4px 16px;
+  border-radius: 20px;
+  margin-bottom: 16px;
+  transform: rotate(-2deg);
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.chapter-title {
+  font-family: 'Fredoka', sans-serif;
+  font-size: clamp(32px, 5vw, 48px);
+  color: #d84315;
+  margin-bottom: 28px;
+  line-height: 1.1;
+  letter-spacing: -1px;
+}
+
+.prose {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #4a3528;
+  margin-bottom: 16px;
+  font-weight: 400;
+}
+
+.prose.hand {
+  font-family: 'Caveat', cursive;
+  font-size: 26px;
+  color: #d84315;
+  font-weight: 600;
+  margin: 24px 0;
+}
+
+.prose.center { text-align: center; }
+.prose.hand.center { text-align: center; }
+
+.prose ul, .prose ol {
+  padding-left: 24px;
+}
+
+.prose li {
+  margin-bottom: 8px;
+  line-height: 1.6;
+}
+
+/* ============================================================
+   POLAROID
+============================================================ */
+
+.polaroid {
+  position: relative;
+  display: inline-block;
+  background: #fff;
+  padding: 12px 12px 36px;
+  box-shadow:
+    0 8px 24px rgba(80, 50, 30, 0.25),
+    0 2px 8px rgba(80, 50, 30, 0.15);
+  transform: rotate(-3deg);
+  margin: 24px auto;
+}
+
+.polaroid.small { transform: rotate(2deg); margin: 0; }
+.polaroid.large { transform: rotate(-2deg); margin: 32px auto; }
+
+.polaroid-tape {
+  position: absolute;
+  top: -16px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-4deg);
+  width: 80px;
+  height: 24px;
+  background: rgba(255, 235, 150, 0.7);
+  border: 1px dashed rgba(180, 150, 50, 0.3);
+}
+
+.polaroid-img {
+  width: 220px;
+  height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 110px;
+  background: #ffe4d6;
+  background: linear-gradient(135deg, #ffb88c 0%, #ff8a65 100%);
+  border-radius: 4px;
+}
+
+.polaroid.small .polaroid-img {
+  width: 160px;
+  height: 160px;
+  font-size: 80px;
+}
+
+.polaroid-img.sunset-bg {
+  background: linear-gradient(180deg, #ff8a65 0%, #ffb88c 50%, #ffd6a8 100%);
+}
+
+.polaroid-img.road-bg {
+  background: linear-gradient(180deg, #87ceeb 0%, #ffd6a8 60%, #6a8b3a 100%);
+}
+
+.polaroid-img.start-bg {
+  background: linear-gradient(135deg, #ffe4d6 0%, #ffb88c 100%);
+}
+
+.polaroid-caption {
+  margin-top: 12px;
+  font-family: 'Caveat', cursive;
+  font-size: 22px;
+  color: #5d4037;
+  text-align: center;
+  font-weight: 500;
+}
+
+.motor-emoji {
+  font-size: 130px;
+}
+
+/* ============================================================
+   STORY FLEX (text + polaroid)
+============================================================ */
+
+.story-flex {
+  display: flex;
+  align-items: flex-start;
+  gap: 32px;
+  margin: 24px 0;
+}
+
+.story-flex.reverse { flex-direction: row-reverse; }
+
+.story-flex .story-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.story-flex .polaroid {
+  flex-shrink: 0;
+  margin: 0;
+}
+
+/* ============================================================
+   CHECKLIST
+============================================================ */
+
+.checklist {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 24px 0;
+}
+
+.check-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background: rgba(255, 235, 220, 0.6);
+  border: 1px dashed rgba(216, 67, 21, 0.3);
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.check-icon {
+  font-size: 32px;
+  flex-shrink: 0;
+}
+
+.check-item h4 {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 16px;
+  color: #d84315;
+  margin-bottom: 4px;
+}
+
+.check-item p {
+  font-size: 13px;
+  color: #5d4037;
+  line-height: 1.5;
+}
+
+/* ============================================================
+   INFO CARD
+============================================================ */
+
+.info-card {
+  background: rgba(255, 235, 220, 0.7);
+  border: 2px dashed #ff8a65;
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin: 24px 0;
+}
+
+.info-card h4 {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 18px;
+  color: #d84315;
+  margin-bottom: 12px;
+}
+
+.info-card .prose { font-size: 15px; margin: 0; }
+
+/* ============================================================
+   KEYS GRID
+============================================================ */
+
+.keys-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin: 24px 0;
+}
+
+.key-card {
+  text-align: center;
+  background: #fff5ee;
+  border: 2px dashed #ffab91;
+  border-radius: 16px;
+  padding: 20px 16px;
+  transition: transform 0.2s ease;
+}
+
+.key-card:hover { transform: translateY(-4px) rotate(1deg); }
+
+.key-big {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  background: #ff5e3a;
+  color: #fff;
+  font-family: 'Fredoka', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  box-shadow: 0 4px 0 #c43b1a, 0 6px 12px rgba(255, 94, 58, 0.3);
+}
+
+.key-card h4 {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 16px;
+  color: #d84315;
+  margin-bottom: 6px;
+}
+
+.key-card p {
+  font-size: 13px;
+  color: #5d4037;
+  line-height: 1.4;
+}
+
+/* ============================================================
+   BUTTONS
+============================================================ */
+
+.btn-adventure {
+  display: inline-block;
+  background: #fff;
+  color: #ff5e3a;
+  font-family: 'Fredoka', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  padding: 16px 36px;
+  border-radius: 100px;
+  border: 3px solid #ff5e3a;
+  box-shadow: 0 4px 0 #c43b1a, 0 8px 20px rgba(255, 94, 58, 0.3);
+  transition: all 0.2s ease;
+  margin-top: 24px;
+}
+
+.btn-adventure:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 #c43b1a, 0 12px 24px rgba(255, 94, 58, 0.4);
+}
+
+.btn-adventure:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 #c43b1a, 0 4px 8px rgba(255, 94, 58, 0.3);
+}
+
+.btn-adventure.big {
+  font-size: 16px;
+  padding: 20px 48px;
+  background: #ff5e3a;
+  color: #fff;
+}
+
+.chapter-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 2px dashed #ffab91;
+}
+
+.btn-nav {
+  background: transparent;
+  color: #5d4037;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 100px;
+  border: 2px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.btn-nav:hover {
+  background: #fff;
+  border-color: #ffab91;
+}
+
+.btn-nav.primary {
+  background: #ff5e3a;
+  color: #fff;
+  border-color: #ff5e3a;
+}
+
+.btn-nav.primary:hover {
+  background: #e54328;
+  border-color: #e54328;
+  transform: translateX(2px);
+}
+
+.page-indicator {
+  font-family: 'Caveat', cursive;
+  font-size: 18px;
+  color: #5d4037;
+  font-weight: 600;
+}
+
+/* ============================================================
+   CREDITS FOOTER
+============================================================ */
+
+.credits {
+  position: fixed;
+  bottom: 12px;
+  left: 0; right: 0;
+  text-align: center;
+  font-size: 11px;
+  color: #8d6e63;
+  letter-spacing: 1px;
+  z-index: 5;
+  pointer-events: none;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+
+@media (max-width: 720px) {
+  .paper {
+    padding: 32px 24px 32px 60px;
+  }
+  .paper-holes { left: 18px; }
+  .paper-margin { left: 50px; }
+
+  .story-flex, .story-flex.reverse {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .checklist, .keys-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .doodle, .doodle-star, .doodle-heart { display: none; }
+}
+
+@media (max-width: 480px) {
+  .title-big { font-size: 44px; }
+  .chapter-title { font-size: 28px; }
+  .polaroid-img { width: 180px; height: 180px; font-size: 90px; }
+  .polaroid.small .polaroid-img { width: 140px; height: 140px; font-size: 70px; }
+}
